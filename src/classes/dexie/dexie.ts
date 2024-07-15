@@ -127,7 +127,7 @@ export class Dexie implements IDexie {
       cancelOpen: nop,
       openCanceller: null as Promise,
       autoSchema: true,
-      PR1398_maxLoop: 3,
+      PR1398_maxLoop: 300,
       autoOpen: options.autoOpen,
     };
     state.dbReadyPromise = new Promise(resolve => {
