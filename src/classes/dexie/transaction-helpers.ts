@@ -54,7 +54,7 @@ export function enterTransactionScope(
         trans.create(); // Create the native transaction so that complete() or error() will trigger even if no operation is made upon it.
         // @ts-ignore Mark the idbtrans object with "_explicit". DBCore middleware won't have access to Dexie trans but will need to have this info.
         trans.idbtrans._explicit = true;
-        db._state.PR1398_maxLoop = 3;
+        db._state.PR1398_maxLoop = 100;
       } catch (ex) {
         if (ex.name === errnames.InvalidState && db.isOpen() && --db._state.PR1398_maxLoop > 0) {
           console.warn('Dexie: Need to reopen db');
