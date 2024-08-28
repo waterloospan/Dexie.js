@@ -37,46 +37,11 @@ For example, the file `foo/bar.h`:
 
 ### Include What You Use
 
-If a source or header file refers to a symbol defined elsewhere, the file should directly include a header file which properly intends to provide a declaration or definition of that symbol. It should not include header files for any other reason.
-
-Do not rely on transitive inclusions. This allows people to remove no-longer-needed `#include` statements from their headers without breaking clients. This also applies to related headers - `foo.cc` should include `bar.h` if it uses a symbol from it even if `foo.h` includes `bar.h`.
+Do not rely on transitive inclusion. If a source or header file refers to a symbol defined elsewhere, the file should directly include a header file which properly intends to provide a declaration or definition of that symbol. It should not include header files for any other reason.
 
 ### Forward Declarations
 
-Avoid using forward declarations where possible. Instead, [include the headers you need](#Include_What_You_Use).
-
-A "forward declaration" is a declaration of an entity without an associated definition.
-
-// In a C++ source file:
-class B;
-void FuncInB();
-extern int variable\_in\_b;
-ABSL\_DECLARE\_FLAG(flag\_in\_b);
-
-*   Forward declarations can save compile time, as `#include`s force the compiler to open more files and process more input.
-*   Forward declarations can save on unnecessary recompilation. `#include`s can force your code to be recompiled more often, due to unrelated changes in the header.
-
-*   Forward declarations can hide a dependency, allowing user code to skip necessary recompilation when headers change.
-*   A forward declaration as opposed to an `#include` statement makes it difficult for automatic tooling to discover the module defining the symbol.
-*   A forward declaration may be broken by subsequent changes to the library. Forward declarations of functions and templates can prevent the header owners from making otherwise-compatible changes to their APIs, such as widening a parameter type, adding a template parameter with a default value, or migrating to a new namespace.
-*   Forward declaring symbols from namespace `std::` yields undefined behavior.
-*   It can be difficult to determine whether a forward declaration or a full `#include` is needed. Replacing an `#include` with a forward declaration can silently change the meaning of code:
-    
-    // b.h:
-    struct B {};
-    struct D : B {};
-    
-    // good\_user.cc:
-    #include "b.h"
-    void f(B\*);
-    void f(void\*);
-    void test(D\* x) { f(x); }  // Calls f(B\*)
-    
-    If the `#include` was replaced with forward decls for `B` and `D`, `test()` would call `f(void*)`.
-*   Forward declaring multiple symbols from a header can be more verbose than simply `#include`ing the header.
-*   Structuring code to enable forward declarations (e.g., using pointer members instead of object members) can make the code slower and more complex.
-
-Try to avoid forward declarations of entities defined in another project.
+Avoid using forward declarations where possible.
 
 ### Inline Functions
 
