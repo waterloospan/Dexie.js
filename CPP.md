@@ -1,4 +1,4 @@
-dsxzPeaks C++ Style Guide
+Peaks C++ Style Guide
 ======================
 
 It's based on Google's C++ Style Guide, simplified to suit our own needs
