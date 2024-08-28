@@ -19,7 +19,7 @@ Unit tests may not need header files.
 
 Header files should be self-contained (compile on their own) and end in `.h` or `.cuh`. \
 Users and refactoring tools should not have to adhere to special conditions to include the header. \
-Specifically, a header should have [header guards](#The__define_Guard) and include all other headers it needs.
+Specifically, a header should have `header guards` and include all other headers it needs.
 
 ### The #define Guard
 
