@@ -17,7 +17,7 @@ Regular C++: in general, every `.cc` file should have an associated `.h` file. \
 CUDA: every `.cu` file should have an assoicated `.cuh` file. \
 Unit tests may not need header files.
 
-Header files should be self-contained (compile on their own) and end in `.h`. \
+Header files should be self-contained (compile on their own) and end in `.h` or `.cuh`. \
 Users and refactoring tools should not have to adhere to special conditions to include the header. \
 Specifically, a header should have [header guards](#The__define_Guard) and include all other headers it needs.
 
