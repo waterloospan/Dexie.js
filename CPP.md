@@ -1,7 +1,8 @@
 Peaks C++ Style Guide
 ======================
 
-It's based on Google's C++ Style Guide, simplified to suit our own needs. If anything is missing, we can discuss and adopt more from the original Google guide.
+It's based on Google's C++ Style Guide, simplified to suit our own needs. If anything is missing, we can discuss and adopt more from the original Google guide. \
+This style guide only govern our own code, there's no need to refactor 3rd party codes included in our project.
 
 C++ Version
 -----------
