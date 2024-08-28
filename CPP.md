@@ -29,12 +29,12 @@ To guarantee uniqueness, they should be based on the full path in the source tre
 For example, the file `foo/bar.h`: 
 
 ```
-#ifndef \_PEAKS\_FOO\_BAR\_H\_ \
-#define \_PEAKS\_FOO\_BAR\_H\_ 
+#ifndef _PEAKS_FOO_BAR_H_
+#define _PEAKS_FOO_BAR_H_ 
 
 ...
 
-#endif  // \_PEAKS\_FOO\_BAR\_H\_
+#endif  // _PEAKS_FOO_BAR_H_
 ```
 
 ### Include What You Use
