@@ -28,12 +28,14 @@ The format of the symbol name should be `_PEAKS_<PATH>_<FILE>_H_`. \
 To guarantee uniqueness, they should be based on the full path in the source tree. \
 For example, the file `foo/bar.h`: 
 
+```
 #ifndef \_PEAKS\_FOO\_BAR\_H\_ \
 #define \_PEAKS\_FOO\_BAR\_H\_ 
 
 ...
 
 #endif  // \_PEAKS\_FOO\_BAR\_H\_
+```
 
 ### Include What You Use
 
