@@ -29,7 +29,7 @@ To guarantee uniqueness, they should be based on the full path in the source tre
 For example, the file `foo/bar.h`: 
 
 #ifndef \_PEAKS\_FOO\_BAR\_H\_ \
-#define \_PEAKS\_FOO\_BAR\_H\_ \
+#define \_PEAKS\_FOO\_BAR\_H\_ 
 
 ...
 
