@@ -1,4 +1,4 @@
-Peaks C++ Style Guide
+dsxzPeaks C++ Style Guide
 ======================
 
 It's based on Google's C++ Style Guide, simplified to suit our own needs
@@ -13,8 +13,8 @@ Do not use non-standard extensions.
 Header Files
 ------------
 
-Regular C++: in general, every `.cc` file should have an associated `.h` file. 
-CUDA: every `.cu` file should have an assoicated `.cuh` file.
+Regular C++: in general, every `.cc` file should have an associated `.h` file. \
+CUDA: every `.cu` file should have an assoicated `.cuh` file. \
 Unit tests may not need header files
 
 ### Self-contained Headers
