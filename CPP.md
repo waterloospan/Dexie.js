@@ -1,7 +1,7 @@
 Peaks C++ Style Guide
 ======================
 
-It's based on Google's C++ Style Guide, simplified to suit our own needs
+It's based on Google's C++ Style Guide, simplified to suit our own needs. If anything is missing, we can discuss and adopt more from the original Google guide.
 
 C++ Version
 -----------
@@ -54,18 +54,6 @@ Define functions inline only when they are small and simple: 10 lines or fewer, 
 Include headers in the following order: Related header, C system headers, C++ standard library headers, other libraries' headers, our own headers. \
 Do not use aliases `.` (the current directory) or `..` (the parent directory). \
 Headers should only be included using an angle-bracketed path if the library requires you to do so.
-
-**Exception:**
-
-Sometimes, system-specific code needs conditional includes. Such code can put conditional includes after other includes. Of course, keep your system-specific code small and localized. Example:
-
-#include "foo/public/fooserver.h"
-
-#include "base/port.h"  // For LANG\_CXX11.
-
-#ifdef LANG\_CXX11
-#include <initializer\_list>
-#endif  // LANG\_CXX11
 
 Scoping
 -------
