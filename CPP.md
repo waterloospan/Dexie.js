@@ -23,16 +23,17 @@ Specifically, a header should have [header guards](#The__define_Guard) and inclu
 
 ### The #define Guard
 
-All header files should have `#define` guards to prevent multiple inclusion. The format of the symbol name should be `_<PROJECT>___<PATH>___<FILE>__H_`.
+All header files should have `#define` guards to prevent multiple inclusion. \
+The format of the symbol name should be `_PEAKS_<PATH>_<FILE>_H_`. \
+To guarantee uniqueness, they should be based on the full path in the source tree. \
+For example, the file `foo/bar.h`: 
 
-To guarantee uniqueness, they should be based on the full path in a project's source tree. For example, the file `foo/src/bar/baz.h` in project `foo` should have the following guard:
-
-#ifndef FOO\_BAR\_BAZ\_H\_
-#define FOO\_BAR\_BAZ\_H\_
+#ifndef \_PEAKS\_FOO\_BAR\_H\_ \
+#define \_PEAKS\_FOO\_BAR\_H\_ \
 
 ...
 
-#endif  // FOO\_BAR\_BAZ\_H\_
+#endif  // \_PEAKS\_FOO\_BAR\_H\_
 
 ### Include What You Use
 
