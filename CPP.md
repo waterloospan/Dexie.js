@@ -15,17 +15,11 @@ Header Files
 
 Regular C++: in general, every `.cc` file should have an associated `.h` file. \
 CUDA: every `.cu` file should have an assoicated `.cuh` file. \
-Unit tests may not need header files
+Unit tests may not need header files.
 
-### Self-contained Headers
-
-Header files should be self-contained (compile on their own) and end in `.h`. Non-header files that are meant for inclusion should end in `.inc` and be used sparingly.
-
-All header files should be self-contained. Users and refactoring tools should not have to adhere to special conditions to include the header. Specifically, a header should have [header guards](#The__define_Guard) and include all other headers it needs.
-
-When a header declares inline functions or templates that clients of the header will instantiate, the inline functions and templates must also have definitions in the header, either directly or in files it includes. Do not move these definitions to separately included header (`-inl.h`) files; this practice was common in the past, but is no longer allowed. When all instantiations of a template occur in one `.cc` file, either because they're [explicit](https://en.cppreference.com/w/cpp/language/class_template#Explicit_instantiation) or because the definition is accessible to only the `.cc` file, the template definition can be kept in that file.
-
-There are rare cases where a file designed to be included is not self-contained. These are typically intended to be included at unusual locations, such as the middle of another file. They might not use [header guards](#The__define_Guard), and might not include their prerequisites. Name such files with the `.inc` extension. Use sparingly, and prefer self-contained headers when possible.
+Header files should be self-contained (compile on their own) and end in `.h`. \
+Users and refactoring tools should not have to adhere to special conditions to include the header. \
+Specifically, a header should have [header guards](#The__define_Guard) and include all other headers it needs.
 
 ### The #define Guard
 
