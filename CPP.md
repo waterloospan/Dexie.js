@@ -60,105 +60,12 @@ Scoping
 
 ### Namespaces
 
-With few exceptions, place code in a namespace. Namespaces should have unique names based on the project name, and possibly its path. Do not use _using-directives_ (e.g., `using namespace foo`). Do not use inline namespaces. For unnamed namespaces, see [Internal Linkage](#Internal_Linkage).
-
-Namespaces subdivide the global scope into distinct, named scopes, and so are useful for preventing name collisions in the global scope.
-
-Namespaces provide a method for preventing name conflicts in large programs while allowing most code to use reasonably short names.
-
-For example, if two different projects have a class `Foo` in the global scope, these symbols may collide at compile time or at runtime. If each project places their code in a namespace, `project1::Foo` and `project2::Foo` are now distinct symbols that do not collide, and code within each project's namespace can continue to refer to `Foo` without the prefix.
-
-Inline namespaces automatically place their names in the enclosing scope. Consider the following snippet, for example:
-
-namespace outer {
-inline namespace inner {
-  void foo();
-}  // namespace inner
-}  // namespace outer
-
-The expressions `outer::inner::foo()` and `outer::foo()` are interchangeable. Inline namespaces are primarily intended for ABI compatibility across versions.
-
-Namespaces can be confusing, because they complicate the mechanics of figuring out what definition a name refers to.
-
-Inline namespaces, in particular, can be confusing because names aren't actually restricted to the namespace where they are declared. They are only useful as part of some larger versioning policy.
-
-In some contexts, it's necessary to repeatedly refer to symbols by their fully-qualified names. For deeply-nested namespaces, this can add a lot of clutter.
-
-Namespaces should be used as follows:
-
-*   Follow the rules on [Namespace Names](#Namespace_Names).
-*   Terminate multi-line namespaces with comments as shown in the given examples.
-*   Namespaces wrap the entire source file after includes, [gflags](https://gflags.github.io/gflags/) definitions/declarations and forward declarations of classes from other namespaces.
-    
-    // In the .h file
-    namespace mynamespace {
-    
-    // All declarations are within the namespace scope.
-    // Notice the lack of indentation.
-    class MyClass {
-     public:
-      ...
-      void Foo();
-    };
-    
-    }  // namespace mynamespace
-    
-    // In the .cc file
-    namespace mynamespace {
-    
-    // Definition of functions is within scope of the namespace.
-    void MyClass::Foo() {
-      ...
-    }
-    
-    }  // namespace mynamespace
-    
-    More complex `.cc` files might have additional details, like flags or using-declarations.
-    
-    #include "a.h"
-    
-    ABSL\_FLAG(bool, someflag, false, "a flag");
-    
-    namespace mynamespace {
-    
-    using ::foo::Bar;
-    
-    ...code for mynamespace...    // Code goes against the left margin.
-    
-    }  // namespace mynamespace
-    
-*   To place generated protocol message code in a namespace, use the `package` specifier in the `.proto` file. See [Protocol Buffer Packages](https://developers.google.com/protocol-buffers/docs/reference/cpp-generated#package) for details.
-*   Do not declare anything in namespace `std`, including forward declarations of standard library classes. Declaring entities in namespace `std` is undefined behavior, i.e., not portable. To declare entities from the standard library, include the appropriate header file.
-*   You may not use a _using-directive_ to make all names from a namespace available.
-    
-    // Forbidden -- This pollutes the namespace.
-    using namespace foo;
-    
-*   Do not use _Namespace aliases_ at namespace scope in header files except in explicitly marked internal-only namespaces, because anything imported into a namespace in a header file becomes part of the public API exported by that file.
-    
-    // Shorten access to some commonly used names in .cc files.
-    namespace baz = ::foo::bar::baz;
-    
-    // Shorten access to some commonly used names (in a .h file).
-    namespace librarian {
-    namespace internal {  // Internal, not part of the API.
-    namespace sidetable = ::pipeline\_diagnostics::sidetable;
-    }  // namespace internal
-    
-    inline void my\_inline\_function() {
-      // namespace alias local to a function (or method).
-      namespace baz = ::foo::bar::baz;
-      ...
-    }
-    }  // namespace librarian
-    
-*   Do not use inline namespaces.
-*   Use namespaces with "internal" in the name to document parts of an API that should not be mentioned by users of the API.
-    
-    // We shouldn't use this internal name in non-absl code.
-    using ::absl::container\_internal::ImplementationDetail;
-    
-*   Single-line nested namespace declarations are preferred in new code, but are not required.
+With few exceptions, always place code in a namespace. \
+Our root namespace is peaks, and everything in directory possibly with its path. e.g. peaks::ml \
+Avoid _using-directives_ (e.g., `using namespace foo`). \
+Avoid using inline namespaces. \
+Terminate a namespace with comments referring its name. \
+Single-line nested namespace declarations are preferred but not required.
     
 
 ### Internal Linkage
