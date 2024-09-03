@@ -100,15 +100,15 @@ int jobs = NumJobs();
 f(jobs);      // Good -- declaration immediately (or closely) followed by use.
 
 std::vector<int> v;
-v.push\_back(1);  // Prefer initializing using brace initialization.
-v.push\_back(2);
+v.push_back(1);  // Prefer initializing using brace initialization.
+v.push_back(2);
 
 std::vector<int> v = {1, 2};  // Good -- v starts initialized.
 ```
 
 Variables needed for `if`, `while` and `for` statements should normally be declared within those statements, so that such variables are confined to those scopes. E.g.:
 
-while (const char\* p = strchr(str, '/')) str = p + 1;
+while (const char* p = strchr(str, '/')) str = p + 1;
 
 There is one caveat: if the variable is an object, its constructor is invoked every time it enters scope and is created, and its destructor is invoked every time it goes out of scope.
 
@@ -170,10 +170,12 @@ Such a variable is actually a collection of objects, so that when different thre
 
 `thread_local` variables inside a function have no initialization concerns, but still risk use-after-free during thread exit. Note that you can use a function-scope `thread_local` to simulate a class- or namespace-scope `thread_local` by defining a function or static method that exposes it:
 
+```
 Foo& MyThreadLocalFoo() {
-  thread\_local Foo result = ComplicatedInitialization();
+  thread_local Foo result = ComplicatedInitialization();
   return result;
 }
+```
 
 Note that `thread_local` variables will be destroyed whenever a thread exits. If the destructor of any such variable refers to any other (potentially-destroyed) `thread_local` we will suffer from hard to diagnose use-after-free bugs. Prefer trivial types, or types that provably run no user-provided code at destruction to minimize the potential of accessing any other `thread_local`.
 
@@ -213,15 +215,15 @@ class MyClass {
 class MyClass {
  public:
   int CountFooErrors(const std::vector<Foo>& foos) {
-    int total\_number\_of\_foo\_errors = 0;  // Overly verbose given limited scope and context
-    for (int foo\_index = 0; foo\_index < foos.size(); ++foo\_index) {  // Use idiomatic \`i\`
+    int total_number_of_foo_errors = 0;  // Overly verbose given limited scope and context
+    for (int foo_index = 0; foo_index < foos.size(); ++foo_index) {  // Use idiomatic \`i\`
       ...
-      ++total\_number\_of\_foo\_errors;
+      ++total_number_of_foo_errors;
     }
-    return total\_number\_of\_foo\_errors;
+    return total_number_of_foo_errors;
   }
   void DoSomethingImportant() {
-    int cstmr\_id = ...;  // Deletes internal letters
+    int cstmr_id = ...;  // Deletes internal letters
   }
  private:
   const int kNum = ...;  // Unclear meaning within broad scope
@@ -262,10 +264,10 @@ class UrlTableTester { ...
 struct UrlTableProperties { ...
 
 // typedefs
-typedef hash\_map<UrlTableProperties \*, std::string> PropertiesMap;
+typedef hash_map<UrlTableProperties *, std::string> PropertiesMap;
 
 // using aliases
-using PropertiesMap = hash\_map<UrlTableProperties \*, std::string>;
+using PropertiesMap = hash_map<UrlTableProperties *, std::string>;
 
 // enums
 enum class UrlTableError { ...
