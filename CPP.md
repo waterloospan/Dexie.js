@@ -240,14 +240,12 @@ Filenames should be all lowercase. We prefer to use "`_`" to connect multiple wo
 
 Examples of acceptable file names:
 
-*   `my_useful_class.cc`
+*   `my_useful_class.cc` (preferred)
 *   `my-useful-class.cc`
-*   `myusefulclass.cc`
-*   `myusefulclass_test.cc // _unittest and _regtest are deprecated.`
 
-C++ files should end in `.cc` and header files should end in `.h`. Files that rely on being textually included at specific points should end in `.inc` (see also the section on [self-contained headers](#Self_contained_Headers)).
-
-Do not use filenames that already exist in `/usr/include`, such as `db.h`.
+C++ files should end in `.cc` and header files should end in `.h`. \
+Files that rely on being textually included at specific points should end in `.inc` \
+Do not use filenames that collide with common or system C++ headers
 
 In general, make your filenames very specific. For example, use `http_server_logs.h` rather than `logs.h`. A very common case is to have a pair of files called, e.g., `foo_bar.h` and `foo_bar.cc`, defining a class called `FooBar`.
 
