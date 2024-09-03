@@ -232,7 +232,7 @@ Note that certain universally-known abbreviations are OK, such as `i` for an ite
 
 For the purposes of the naming rules below, a "word" is anything that you would write in English without internal spaces. This includes abbreviations, such as acronyms and initialisms. For names written in mixed case (also sometimes referred to as "[camel case](https://en.wikipedia.org/wiki/Camel_case)" or "[Pascal case](https://en.wiktionary.org/wiki/Pascal_case)"), in which the first letter of each word is capitalized, prefer to capitalize abbreviations as single words, e.g., `StartRpc()` rather than `StartRPC()`.
 
-Template parameters should follow the naming style for their category: type template parameters should follow the rules for [type names](#Type_Names), and non-type template parameters should follow the rules for [variable names](#Variable_Names).
+Template parameters should follow the naming style for their category: type template parameters should follow the rules for type names, and non-type template parameters should follow the rules for variable names.
 
 ### File Names
 
@@ -255,6 +255,7 @@ Type names start with a capital letter and have a capital letter for each new wo
 
 The names of all types — classes, structs, type aliases, enums, and type template parameters — have the same naming convention. Type names should start with a capital letter and have a capital letter for each new word. No underscores. For example:
 
+```
 // classes and structs
 class UrlTable { ...
 class UrlTableTester { ...
@@ -268,6 +269,7 @@ using PropertiesMap = hash\_map<UrlTableProperties \*, std::string>;
 
 // enums
 enum class UrlTableError { ...
+```
 
 ### Concept Names
 
