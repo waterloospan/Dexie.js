@@ -273,7 +273,7 @@ enum class UrlTableError { ...
 
 ### Concept Names
 
-Concept names follow the same rules as [type names](#Type_Names).
+Concept names follow the same rules as type names.
 
 ### Variable Names
 
