@@ -283,9 +283,10 @@ The names of variables (including function parameters) and data members are `sna
 
 For example:
 
+```
 std::string table\_name;  // OK - snake\_case.
-
 std::string tableName;   // Bad - mixed case.
+```
 
 #### Class Data Members
 
@@ -308,17 +309,20 @@ struct UrlTableProperties {
   static Pool<UrlTableProperties>\* pool;
 };
 
-See [Structs vs. Classes](#Structs_vs._Classes) for a discussion of when to use a struct versus a class.
+See Structs vs. Classes for a discussion of when to use a struct versus a class.
 
 ### Constant Names
 
 Variables declared `constexpr` or `const`, and whose value is fixed for the duration of the program, are named with a leading "k" followed by mixed case. Underscores can be used as separators in the rare cases where capitalization cannot be used for separation. For example:
 
+```
 const int kDaysInAWeek = 7;
 const int kAndroid8\_0\_0 = 24;  // Android 8.0.0
+```
 
 All such variables with static storage duration (i.e., statics and globals, see [Storage Duration](http://en.cppreference.com/w/cpp/language/storage_duration#Storage_duration) for details) should be named this way, including those in templates where different instantiations of the template may have different values. This convention is optional for variables of other storage classes, e.g., automatic variables; otherwise the usual variable naming rules apply. For example:
 
+```
 void ComputeFoo(absl::string\_view suffix) {
   // Either of these is acceptable.
   const absl::string\_view kPrefix = "prefix";
@@ -331,6 +335,7 @@ void ComputeFoo(absl::string\_view suffix) {
   const std::string kCombined = absl::StrCat(kPrefix, suffix);
   ...
 }
+```
 
 ### Function Names
 
