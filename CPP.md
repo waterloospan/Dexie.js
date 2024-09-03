@@ -192,6 +192,7 @@ Optimize for readability using names that would be clear even to people on a dif
 
 Use names that describe the purpose or intent of the object. Do not worry about saving horizontal space as it is far more important to make your code immediately understandable by a new reader. Minimize the use of abbreviations that would likely be unknown to someone outside your project (especially acronyms and initialisms). Do not abbreviate by deleting letters within a word. As a rule of thumb, an abbreviation is probably OK if it's listed in Wikipedia. Generally speaking, descriptiveness should be proportional to the name's scope of visibility. For example, `n` may be a fine name within a 5-line function, but within the scope of a class, it's likely too vague.
 
+```
 class MyClass {
  public:
   int CountFooErrors(const std::vector<Foo>& foos) {
@@ -225,6 +226,7 @@ class MyClass {
  private:
   const int kNum = ...;  // Unclear meaning within broad scope
 };
+```
 
 Note that certain universally-known abbreviations are OK, such as `i` for an iteration variable and `T` for a template parameter.
 
@@ -234,7 +236,7 @@ Template parameters should follow the naming style for their category: type temp
 
 ### File Names
 
-Filenames should be all lowercase and can include underscores (`_`) or dashes (`-`). Follow the convention that your project uses. If there is no consistent local pattern to follow, prefer "`_`".
+Filenames should be all lowercase. We prefer to use "`_`" to connect multiple words though "`-`" is allowed.
 
 Examples of acceptable file names:
 
