@@ -284,7 +284,7 @@ The names of variables (including function parameters) and data members are `sna
 For example:
 
 ```
-std::string table\_name;  // OK - snake\_case.
+std::string table_name;  // OK - snake\_case.
 std::string tableName;   // Bad - mixed case.
 ```
 
@@ -295,19 +295,21 @@ Data members of classes, both static and non-static, are named like ordinary non
 class TableInfo {
   ...
  private:
-  std::string table\_name\_;  // OK - underscore at end.
-  static Pool<TableInfo>\* pool\_;  // OK.
+  std::string table_name_;  // OK - underscore at end.
+  static Pool<TableInfo>* pool_;  // OK.
 };
 
 #### Struct Data Members
 
 Data members of structs, both static and non-static, are named like ordinary nonmember variables. They do not have the trailing underscores that data members in classes have.
 
+```
 struct UrlTableProperties {
   std::string name;
-  int num\_entries;
-  static Pool<UrlTableProperties>\* pool;
+  int num_entries;
+  static Pool<UrlTableProperties>* pool;
 };
+```
 
 See Structs vs. Classes for a discussion of when to use a struct versus a class.
 
@@ -317,20 +319,20 @@ Variables declared `constexpr` or `const`, and whose value is fixed for the dura
 
 ```
 const int kDaysInAWeek = 7;
-const int kAndroid8\_0\_0 = 24;  // Android 8.0.0
+const int kAndroid8_0_0 = 24;  // Android 8.0.0
 ```
 
 All such variables with static storage duration (i.e., statics and globals, see [Storage Duration](http://en.cppreference.com/w/cpp/language/storage_duration#Storage_duration) for details) should be named this way, including those in templates where different instantiations of the template may have different values. This convention is optional for variables of other storage classes, e.g., automatic variables; otherwise the usual variable naming rules apply. For example:
 
 ```
-void ComputeFoo(absl::string\_view suffix) {
+void ComputeFoo(absl::string_view suffix) {
   // Either of these is acceptable.
-  const absl::string\_view kPrefix = "prefix";
-  const absl::string\_view prefix = "prefix";
+  const absl::string_view kPrefix = "prefix";
+  const absl::string_view prefix = "prefix";
   ...
 }
 
-void ComputeFoo(absl::string\_view suffix) {
+void ComputeFoo(absl::string_view suffix) {
   // Bad - different invocations of ComputeFoo give kCombined different values.
   const std::string kCombined = absl::StrCat(kPrefix, suffix);
   ...
